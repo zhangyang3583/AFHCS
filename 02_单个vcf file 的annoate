@@ -21,7 +21,7 @@ mkdir -p /home/Desktop/AFHCS/annotsv_work && cd ~/annotsv_work
 
 # 只保留 PASS 变异(从 96 → 76 个)
 awk '/^#/ || $7=="PASS"' \
-  /mnt/user-data/uploads/HSS13_sv_small_indel_dedup.vcf \
+  /home/yang/Desktop/AFHCS/sv_files/HSS13.sv.small_indel_dedup.vcf \
   > HSS13_PASS.vcf
 
 # 确认
@@ -29,9 +29,9 @@ echo "PASS 变异数: $(grep -vc '^#' HSS13_PASS.vcf)"
 
 第 4 步:跑 AnnotSV
 AnnotSV \
-  -SVinputFile ~/annotsv_work/HSS13_PASS.vcf \
-  -annotationsDir ~/annotsv_data \
-  -outputDir ~/annotsv_work/annotsv_output \
+  -SVinputFile /home/yang/Desktop/AFHCS/annotsv_work/HSS13_PASS.vcf \
+  -annotationsDir /home/yang/Desktop/AFHCS/annotsv_data \
+  -outputDir /home/yang/Desktop/AFHCS/annotsv_work/annotsv_output \
   -outputFile HSS13_annotated \
   -genomeBuild GRCh38 \
   -SVinputInfo 1 \
