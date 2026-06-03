@@ -17,7 +17,7 @@ ls $ANNOT_DIR/Annotations_Human/Genes/GRCh38/ | head -5
 
 第 3 步:准备工作目录 + 过滤 PASS 变异
 # 建工作目录
-mkdir -p ~/annotsv_work && cd ~/annotsv_work
+mkdir -p /home/Desktop/AFHCS/annotsv_work && cd ~/annotsv_work
 
 # 只保留 PASS 变异(从 96 → 76 个)
 awk '/^#/ || $7=="PASS"' \
