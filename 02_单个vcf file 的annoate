@@ -1,0 +1,41 @@
+第 1 步:激活环境 + 设置必要变量
+
+# 激活你装好 AnnotSV 的环境
+conda activate AFHCS
+# 防止染色体排序报错(README p.72 要求)
+export LC_ALL=C
+# 验证 AnnotSV 能找到
+AnnotSV --version
+
+第 2 步:确认注释库路径结构对
+# 把下面路径改成你实际的解压位置
+ANNOT_DIR=~/annotsv_data    # 改成你的实际路径
+
+# 应该能看到 Annotations_Human/ 目录
+ls $ANNOT_DIR/
+ls $ANNOT_DIR/Annotations_Human/Genes/GRCh38/ | head -5
+
+第 3 步:准备工作目录 + 过滤 PASS 变异
+# 建工作目录
+mkdir -p ~/annotsv_work && cd ~/annotsv_work
+
+# 只保留 PASS 变异(从 96 → 76 个)
+awk '/^#/ || $7=="PASS"' \
+  /mnt/user-data/uploads/HSS13_sv_small_indel_dedup.vcf \
+  > HSS13_PASS.vcf
+
+# 确认
+echo "PASS 变异数: $(grep -vc '^#' HSS13_PASS.vcf)"
+
+第 4 步:跑 AnnotSV
+AnnotSV \
+  -SVinputFile ~/annotsv_work/HSS13_PASS.vcf \
+  -annotationsDir ~/annotsv_data \
+  -outputDir ~/annotsv_work/annotsv_output \
+  -outputFile HSS13_annotated \
+  -genomeBuild GRCh38 \
+  -SVinputInfo 1 \
+  -annotationMode both \
+  -SVminSize 50 \
+  -overwrite 1 \
+  2>&1 | tee ~/annotsv_work/AnnotSV.log
