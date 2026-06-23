@@ -7,3 +7,6 @@ conda activate caddsv
 
 # 验证
 python --version    # 应该显示 Python 3.12.x
+
+mkdir -p /home/yang/Desktop/AFHCS/caddsv
+cd /home/yang/Desktop/AFHCS/caddsv
