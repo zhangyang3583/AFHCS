@@ -1,0 +1,9 @@
+# 退出当前环境
+conda deactivate
+
+# 新建专用环境
+conda create -n caddsv python=3.12 pip -y
+conda activate caddsv
+
+# 验证
+python --version    # 应该显示 Python 3.12.x
