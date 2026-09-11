@@ -1,1 +1,16 @@
+#Activate conda environment
+conda activate /home/yang/anaconda3/envs/Etch_db
 
+cd /home/yang/Desktop/AFHCS/ETCHING
+
+nohup etching \
+  -1 /home/yang/Desktop/AFHCS/wgs_fastq/PG0002898-DNA_R1.fastq.gz \
+  -2 /home/yang/Desktop/AFHCS/wgs_fastq/PG0002898-DNA_R2.fastq.gz \
+  -g /home/yang/Desktop/Yang/Breakpoint_dataset/hg19_ref/GRCh38_masked_v2_decoy_gene.fasta \
+  -f /home/yang/Desktop/PGK2/PGK2 \
+  -o PG0002898 \
+  --work-dir PG0002898_work \
+  --output-dir . \
+  -t 12 \
+  --keep-kmc \
+  > PG0002898.etching.stdout.log 2>&1 &
