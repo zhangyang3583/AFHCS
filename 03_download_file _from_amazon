@@ -1,1 +1,13 @@
+#list all of teh directory
+aws s3 ls
+# 
+aws s3 ls s3://afhcs/
+
+
+aws s3 cp s3://afhcs/afhcs_wgs/inputs/ /media/yang/MyPassport/AFHCS/wgs_fastq --recursive \
+  --exclude "*" \
+  --include "SCi_2063_WGS_R1.fastq.gz" \
+  --include "SCi_2063_WGS_R2.fastq.gz" \
+  --include "PG0002898-DNA_R1.fastq.gz" \
+  --include "PG0002898-DNA_R2.fastq.gz"
 
