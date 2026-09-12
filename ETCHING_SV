@@ -14,3 +14,16 @@ nohup etching \
   -t 12 \
   --keep-kmc \
   > PG0002898.etching.stdout.log 2>&1 &
+
+
+nohup etching \
+  -1 /media/yang/MyPassport/AFHCS/wgs_fastq/SCi_2063_WGS_R1.fastq.gz \
+  -2 /media/yang/MyPassport/AFHCS/wgs_fastq/SCi_2063_WGS_R2.fastq.gz \
+  -g /home/yang/Desktop/Yang/Breakpoint_dataset/hg19_ref/GRCh38_masked_v2_decoy_gene.fasta \
+  -f /home/yang/Desktop/PGK2/PGK2 \
+  -o SCi_2063_WGS \
+  --work-dir SCi_2063_WGS_work \
+  --output-dir . \
+  -t 12 \
+  --keep-kmc \
+  > SCi_2063_WGS.etching.stdout.log 2>&1 &
